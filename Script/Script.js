@@ -44,6 +44,11 @@ const ruleOptionsEnable = {
 
 // 定义前置规则
 const prefixRules = [
+  // 用户自定义：Emby 影视服强制直连（单独保留此小段，方便后续合并上游更新）
+  'DOMAIN,eb.atrct.cn,直连',
+  'DOMAIN,media.nookreel.com,直连',
+  'DOMAIN,cdn.278612356.xyz,直连',
+
   // 规则集下载域名，避免出现鸡蛋问题
   'DOMAIN,cdn.jsdmirror.com,直连',
 
