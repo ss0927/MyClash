@@ -1,0 +1,65 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-emby-direct
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch upstream
+        run: |
+          git remote add upstream https://github.com/AIsouler/MyClash.git
+          git fetch upstream main
+
+      - name: Merge upstream while protecting fork customizations
+        id: merge
+        run: |
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Fork is already up to date with upstream."
+            exit 0
+          fi
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Merge upstream changes. When the same lines conflict, keep the fork's
+          # version so local customizations (including Emby routing) are not lost.
+          git merge --no-edit -X ours upstream/main
+
+      - name: Rebuild OwnBox Emby rule set
+        if: steps.merge.outputs.changed == 'true'
+        run: |
+          python3 scripts/build_emby_ruleset.py
+          go install github.com/sagernet/sing-box/cmd/sing-box@latest
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: Compile and commit updated rule set
+        if: steps.merge.outputs.changed == 'true'
+        run: |
+          sing-box version
+          sing-box rule-set compile --output Rules/EmbyDirect.srs Rules/EmbyDirect.json
+          test -s Rules/EmbyDirect.srs
+
+          git add Rules/EmbyDirect.json Rules/EmbyDirect.srs
+          if ! git diff --cached --quiet; then
+            git commit -m "Rebuild EmbyDirect rule set after upstream sync"
+          fi
+
+          git push origin HEAD:main
