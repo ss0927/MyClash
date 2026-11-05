@@ -136,6 +136,15 @@ rule_providers_common:
 
 # 定义 Rule Providers
 rule-providers:
+  # 用户自定义 Emby 直连规则（只需维护 Rules/EmbyDirect.yaml）
+  emby-direct:
+    type: http
+    behavior: classical
+    format: yaml
+    url: 'https://cdn.jsdmirror.com/gh/ss0927/MyClash@main/Rules/EmbyDirect.yaml'
+    path: './ruleset/emby-direct.yaml'
+    interval: 86400
+
   # --- 直连规则集 ---
 
   private:
@@ -479,6 +488,9 @@ proxy-groups:
 # --- 路由规则 (Rules) ---
 
 rules:
+  # 用户自定义 Emby 域名优先直连
+  - RULE-SET,emby-direct,直连
+
   # 规则集下载域名，避免出现鸡蛋问题
   - DOMAIN,cdn.jsdmirror.com,直连
 
