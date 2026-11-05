@@ -1,9 +1,25 @@
 # Emby 自定义直连规则
-# 只在这里添加或删除域名；每条规则后面的 # 是备注，不参与匹配。
-# DOMAIN：精确匹配指定域名。
-# DOMAIN-SUFFIX：匹配该域名本身及其所有子域名。
+# 只在这里添加或删除域名；每条规则后面的 # 是服务备注，不参与匹配。
+# DOMAIN：只匹配指定域名；DOMAIN-SUFFIX：匹配该域名及其所有子域名。
+# 当前全部使用 DOMAIN 精确匹配，避免意外扩大直连范围。
 payload:
-  # 以下三个是仓库原先已有的自定义直连域名，迁移至此并保留精确匹配
-  - 'DOMAIN,eb.atrct.cn' # 原有 Emby 自定义直连域名
-  - 'DOMAIN,media.nookreel.com' # 原有 Emby 自定义直连域名
-  - 'DOMAIN,cdn.278612356.xyz' # 原有 Emby 自定义直连域名
+  - 'DOMAIN,emby.dijia.de' # 乐观
+  - 'DOMAIN,tbagemby.tbag.dpdns.org' # 茶包
+  - 'DOMAIN,www.yuntv.de' # 大西瓜
+  - 'DOMAIN,xg.yuntv.de' # 大西瓜
+  - 'DOMAIN,ccmedia.wybcs.work' # 宸澄
+  - 'DOMAIN,embycc.wybcs.work' # 宸澄
+  - 'DOMAIN,hk.embycc.wybcs.work' # 宸澄
+  - 'DOMAIN,direct.embycc.wybcs.work' # 宸澄
+  - 'DOMAIN,media.nookreel.com' # 星幕
+  - 'DOMAIN,emby.kingemby.com' # 随时跑路
+  - 'DOMAIN,emby.ibukifuko.tech' # 百花
+  - 'DOMAIN,cdn.278612356.xyz' # steven
+  - 'DOMAIN,cf.278612356.xyz' # steven
+  - 'DOMAIN,cf1.278612356.xyz' # steven
+  - 'DOMAIN,eb.atrct.cn' # 乐蛙
+  - 'DOMAIN,13.yusen.cyou' # 予初
+  - 'DOMAIN,aaa.yusen6.ccwu.cc' # 予初
+  - 'DOMAIN,emby.yusen.us.ci' # 予初
+  - 'DOMAIN,embya.yusen.cyou' # 予初
+  - 'DOMAIN,emby.yusen.cc.cd' # 予初
