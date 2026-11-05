@@ -46,10 +46,8 @@ const ruleOptionsEnable = {
 
 // 定义前置规则
 const prefixRules = [
-  // 用户自定义：Emby 影视服强制直连（单独保留此小段，方便后续合并上游更新）
-  'DOMAIN,eb.atrct.cn,直连',
-  'DOMAIN,media.nookreel.com,直连',
-  'DOMAIN,cdn.278612356.xyz,直连',
+  // 用户自定义 Emby 域名优先直连（统一维护在 Rules/EmbyDirect.yaml）
+  'RULE-SET,emby-direct,直连',
 
   // 规则集下载域名，避免出现鸡蛋问题
   'DOMAIN,cdn.jsdmirror.com,直连',
@@ -221,6 +219,16 @@ const ruleProviderCommonIpcidr = {
 
 // 定义基础 Rule Providers
 const baseRuleProviders = {
+  // 用户自定义 Emby 直连规则：域名只需维护 Rules/EmbyDirect.yaml
+  'emby-direct': {
+    type: 'http',
+    behavior: 'classical',
+    format: 'yaml',
+    url: 'https://cdn.jsdmirror.com/gh/ss0927/MyClash@main/Rules/EmbyDirect.yaml',
+    path: './ruleset/emby-direct.yaml',
+    interval: 86400,
+  },
+
   // --- 直连规则集 ---
 
   private: {
