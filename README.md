@@ -133,3 +133,16 @@ https://raw.githubusercontent.com/AIsouler/MyClash/main/Config/mihomoConfigLite.
 - [appshubcc/bett-rules](https://github.com/appshubcc/bett-rules)
 - [Koolson/Qure](https://github.com/Koolson/Qure)
 - [jsdmirror/JSDMirror](https://github.com/jsdmirror/JSDMirror)
+
+---
+
+## Emby 自定义直连域名
+
+本仓库新增独立规则文件：[Rules/EmbyDirect.yaml](Rules/EmbyDirect.yaml)。
+
+- 精简版、全量版覆写脚本和静态 YAML 配置均已引用该规则文件。
+- 只需编辑 `Rules/EmbyDirect.yaml` 中的 `payload`，即可添加或删除个人需要直连的 Emby 域名。
+- 每条规则后可使用 YAML 注释 `# 备注` 标明服务用途。
+- `DOMAIN,example.com` 表示精确匹配；`DOMAIN-SUFFIX,example.com` 表示匹配该域名及其子域名。
+- 自定义规则在原有服务分流规则之前匹配，命中后走仓库的「直连」策略组；原作者 Emby 规则集和策略组保持不变。
+
