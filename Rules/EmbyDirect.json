@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "emby.dijia.de",
+        "tbagemby.tbag.dpdns.org",
+        "www.yuntv.de",
+        "xg.yuntv.de",
+        "ccmedia.wybcs.work",
+        "embycc.wybcs.work",
+        "hk.embycc.wybcs.work",
+        "direct.embycc.wybcs.work",
+        "media.nookreel.com",
+        "emby.kingemby.com",
+        "emby.ibukifuko.tech",
+        "cdn.278612356.xyz",
+        "cf.278612356.xyz",
+        "cf1.278612356.xyz",
+        "eb.atrct.cn",
+        "13.yusen.cyou",
+        "aaa.yusen6.ccwu.cc",
+        "emby.yusen.us.ci",
+        "embya.yusen.cyou",
+        "emby.yusen.cc.cd",
+        "emby.9527.new.tg",
+        "suiying.qutama.de"
+      ]
+    }
+  ]
+}
