@@ -1,0 +1,9 @@
+# Emby 自定义直连规则
+# 只在这里添加或删除域名；每条规则后面的 # 是备注，不参与匹配。
+# DOMAIN：精确匹配指定域名。
+# DOMAIN-SUFFIX：匹配该域名本身及其所有子域名。
+payload:
+  # 以下三个是仓库原先已有的自定义直连域名，迁移至此并保留精确匹配
+  - 'DOMAIN,eb.atrct.cn' # 原有 Emby 自定义直连域名
+  - 'DOMAIN,media.nookreel.com' # 原有 Emby 自定义直连域名
+  - 'DOMAIN,cdn.278612356.xyz' # 原有 Emby 自定义直连域名
