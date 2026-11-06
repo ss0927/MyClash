@@ -5,8 +5,6 @@
 payload:
   - 'DOMAIN,emby.dijia.de' # 乐观
   - 'DOMAIN,tbagemby.tbag.dpdns.org' # 茶包
-  - 'DOMAIN,www.yuntv.de' # 大西瓜
-  - 'DOMAIN,xg.yuntv.de' # 大西瓜
   - 'DOMAIN,ccmedia.wybcs.work' # 宸澄
   - 'DOMAIN,embycc.wybcs.work' # 宸澄
   - 'DOMAIN,hk.embycc.wybcs.work' # 宸澄
